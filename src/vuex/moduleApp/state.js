@@ -21,11 +21,25 @@ const state = {
       icon: 'el-icon-d-arrow-right',
       title: '细银专区'
     },
-    {
-      name: 'Circle',
-      icon: 'el-icon-d-arrow-right',
-      title: '发圈'
-    },
+      {
+          name: 'Circle',
+          icon: 'el-icon-tickets',
+          title: '发圈',
+          role: 'Circle_Bursting',
+          subItems: [
+              {
+              name: 'Bursting',
+              title: '每日爆款'
+              },
+              {
+                  name: 'Source',
+                  title: '宣传素材'
+              },
+              {
+                  name: 'School',
+                  title: '细银学堂'
+              }]
+      },
     {
       name: 'AdminUserManagement',
       icon: 'el-icon-tickets',
@@ -39,7 +53,7 @@ const state = {
     }
   ],
   tabs: [],
-  tabComponents: ['Welcome', 'Area', 'Circle', 'AdminUserList']
+  tabComponents: ['Welcome', 'Area', 'Circle','Bursting','Source','School','AdminUserList']
 }
 
 export default state

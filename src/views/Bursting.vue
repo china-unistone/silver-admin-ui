@@ -13,7 +13,7 @@
     import SectionTab from '../components/SectionTab'
 
     export default {
-        name: "Circle",
+        name: "Bursting",
         components: {
             SectionTab
         },

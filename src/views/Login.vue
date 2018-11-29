@@ -61,6 +61,7 @@ export default {
           this.$store.dispatch('setLoginUserId', {
             loginUserId: login
           })
+          localStorage.setItem('loginUserId',login)
           this.$message({
             'message': '登录成功',
             'type': 'success'

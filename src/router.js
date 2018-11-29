@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
@@ -25,3 +25,13 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  if (to.matched.length === 0) {
+    console.log('从' + from.name + '错误的跳转到未知的', to.name)
+    next('/')
+  } else {
+    next()
+  }
+})
+
+export default router

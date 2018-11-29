@@ -111,11 +111,19 @@ export default {
   },
   methods: {
     checkLogin() {
-      const loginUserId = this.$store.getters.loginUserId
+      let loginUserId = this.$store.getters.loginUserId
       if (!loginUserId || !loginUserId) {
-        this.$router.push({
-          name: 'login'
-        })
+        // 从缓存获取loginUserId
+        loginUserId = localStorage.getItem('loginUserId')
+        if (!loginUserId || !loginUserId) {
+          this.$router.push({
+            name: 'login'
+          })
+        } else {
+          this.$store.dispatch('setLoginUserId', {
+            loginUserId
+          })
+        }
       }
     },
     hasRole(menu) {
@@ -239,12 +247,13 @@ export default {
       this.$store.dispatch('setLoginUserId', {
         loginUserId: ''
       })
+      localStorage.removeItem('loginUserId')
       this.$message({
         'message': '您已安全退出登录',
         'type': 'success'
       })
       this.$router.push({
-        name: 'Login'
+        name: 'login'
       })
     }
   }

@@ -1,0 +1,149 @@
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: "Microsoft YaHei",Helvetica,STHeiTi,sans-serif;
+  }
+}
+
+ul,
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body, dl, dd, h1, h2, h3, h4, p, form {
+  margin: 0;
+}
+
+a{
+  color:#333;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    color:#000;
+  }
+}
+
+.omit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.box {
+  display: flex;
+  display: -webkit-flex; /*webkit*/
+}
+
+.flexNum(@value) {
+  flex: @value;                /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  -webkit-flex: @value;
+}
+
+/*
+loop generate flex
+eg: .flex-1: {
+      flex: 1;
+    }
+*/
+.generate-flex(@n, @i:1) when (@i =< @n) {
+  .flex-@{i} {
+    .flexNum(@i);
+  }
+  .generate-flex(@n, (@i + 1));
+}
+
+.generate-flex(12);
+
+@bgColor: #23292e;
+
+.el-header {
+  background: @bgColor;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.header-left {
+  float: left;
+}
+.header-right {
+  float: right;
+  right: 13px;
+  height: 50px;
+}
+
+.el-menu {
+  height: 100%;
+}
+
+.el-aside {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  z-index: 1;
+}
+
+.el-main {
+  position: absolute;
+  left: 230px;
+  right: 0;
+  top: 50px;
+  z-index: 0;
+}
+
+.el-submenu__title,
+.el-menu-item {
+  position: relative;
+  font-size: 12px !important;
+  height: 45px !important;
+  line-height: 45px !important;
+  &:hover,
+  &.is-active {
+    background: #1f8296 !important;
+  }
+}
+.menu-title {
+  font-size: 12px;
+  position: absolute;
+  left: 50px;
+}
+.menu-icon {
+  width: 16px;
+  height: 12px;
+  position: absolute;
+  left: 20px;
+  top:17px;
+}
+.ellipsis{
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.clearfix{
+  *zoom:1;
+  *clear:both;
+}
+.clearfix:after{
+  display:block;
+  clear:both;
+  content:".";
+  visibility:hidden;
+  height:0;
+  overflow: hidden;
+}
+.clearboth{
+  clear:both;
+}
+#app,.full-page{
+  width: 100%;
+  height: 100%;
+}

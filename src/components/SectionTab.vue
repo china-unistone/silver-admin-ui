@@ -108,31 +108,32 @@ export default {
         content: '',
       },
       config: {
-            //可以在此处定义工具栏的内容
-            // toolbars: [
-            //  ['fullscreen', 'undo', 'redo','|','bold', 'italic', 'underline',
-            //  '|','superscript','subscript','|', 'insertorderedlist', 'insertunorderedlist',
-            //  '|','fontfamily','fontsize','justifyleft','justifyright','justifycenter','justifyjustify']
-            // ],
-            toolbars: [[
-            'fullscreen', 'source', '|', 'undo', 'redo', '|',
-            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-            'directionalityltr', 'directionalityrtl', 'indent', '|',
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-            'simpleupload','insertvideo', 'map', 'insertframe', 'inserttable', 'deletetable','insertrow', 'deleterow', 'insertcol', 'deletecol'
-            ]],
-            autoHeightEnabled: false,
-            autoFloatEnabled: true,
-            initialContent:'',   //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
-            autoClearinitialContent:false, //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
-            initialFrameWidth: null,
-            initialFrameHeight: 350,
-            BaseUrl: '',
-            UEDITOR_HOME_URL: 'static/ueditor/'
-        },
+        //可以在此处定义工具栏的内容
+        // toolbars: [
+        //  ['fullscreen', 'undo', 'redo','|','bold', 'italic', 'underline',
+        //  '|','superscript','subscript','|', 'insertorderedlist', 'insertunorderedlist',
+        //  '|','fontfamily','fontsize','justifyleft','justifyright','justifycenter','justifyjustify']
+        // ],
+        toolbars: [[
+        'fullscreen', 'source', '|', 'undo', 'redo', '|',
+        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+        'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+        'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+        'directionalityltr', 'directionalityrtl', 'indent', '|',
+        'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+        'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+        'simpleupload','insertvideo', 'map', 'insertframe', 'inserttable', 'deletetable','insertrow', 'deleterow', 'insertcol', 'deletecol'
+        ]],
+        autoHeightEnabled: false,
+        autoFloatEnabled: true,
+        initialContent:'',   //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
+        autoClearinitialContent:false, //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
+        initialFrameWidth: null,
+        initialFrameHeight: 350,
+        BaseUrl: '',
+        UEDITOR_HOME_URL: 'ueditor/',
+        ossUrl: API.OSSUrl
+      },
       addFormVisible: false
     }
   },

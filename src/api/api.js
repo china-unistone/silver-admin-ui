@@ -1,4 +1,5 @@
 const API = {
+    OSSUrl: 'http://47.99.200.198/service/aliyun-oss/getSign',
     Login: '/user/login',
     Logout: '/user/logout',
     Welcome: '/welcome',

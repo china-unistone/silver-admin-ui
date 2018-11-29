@@ -1175,10 +1175,12 @@
                             doReady(doc)
                         });
                     } else {
-                        doc.addEventListener("DOMContentLoaded", function () {
-                            doc.removeEventListener("DOMContentLoaded", arguments.callee, false);
+                        var myDOMContentLoaded = function () {
+                            doc.removeEventListener("DOMContentLoaded", myDOMContentLoaded, false);
                             doReady(doc);
-                        }, false);
+                        }
+
+                        doc.addEventListener("DOMContentLoaded", myDOMContentLoaded, false);
                         win.addEventListener('load', function () {
                             doReady(doc)
                         }, false);
@@ -28788,7 +28790,7 @@
                     if (editor.options.wordCount) {
                         function countFn() {
                             setCount(editor,me);
-                            domUtils.un(editor.document, "click", arguments.callee);
+                            domUtils.un(editor.document, "click", countFn);
                         }
                         domUtils.on(editor.document, "click", countFn);
                         editor.ui.getDom('wordcount').innerHTML = editor.getLang("wordCountTip");

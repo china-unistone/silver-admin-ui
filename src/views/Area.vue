@@ -4,22 +4,22 @@
     <el-tab-pane label="专区头条" name="top">
       <SectionTab :section-index="1" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="品质生活" name="life">
+    <el-tab-pane label="品质生活" name="life" :lazy="true">
       <SectionTab :section-index="2" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="居家物品" name="home">
+    <el-tab-pane label="居家物品" name="home" :lazy="true">
       <SectionTab :section-index="3" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="够范儿" name="fashion">
+    <el-tab-pane label="够范儿" name="fashion" :lazy="true">
       <SectionTab :section-index="4" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="文艺风" name="art">
+    <el-tab-pane label="文艺风" name="art" :lazy="true">
       <SectionTab :section-index="5" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="一单品一故事" name="story">
+    <el-tab-pane label="一单品一故事" name="story" :lazy="true">
       <SectionTab :section-index="6" :module-index="1"></SectionTab>
     </el-tab-pane>
-    <el-tab-pane label="创意生活" name="poetry">
+    <el-tab-pane label="创意生活" name="poetry" :lazy="true">
       <SectionTab :section-index="7" :module-index="1"></SectionTab>
     </el-tab-pane>
   </el-tabs>

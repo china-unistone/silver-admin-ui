@@ -61,7 +61,7 @@
                 </el-form-item>
                 <el-form-item>
                     <el-input type="hidden" v-model="form.id" style="display: none"></el-input>
-                    <el-button type="primary" @click="saveEdit">立即创建</el-button>
+                    <el-button type="primary" @click="saveEdit">立即提交</el-button>
                     <el-button @click="cancelEdit">取消</el-button>
                 </el-form-item>
             </el-form>
@@ -85,6 +85,20 @@
         props: {
             sectionIndex: Number,
             moduleIndex: Number,
+        },
+        created() {
+            //获取oss认证
+            axios.get(API.OSSUrl).then((result) => {
+                if(!result || !result.data) {
+                    this.$message.error('图片服务器连接异常！')
+                    return
+                }
+                this.accessid = result.data.accessid
+                this.policy = result.data.policy
+                this.signature = result.data.signature
+                this.ossDir = result.data.dir
+                this.ossHost = result.data.host
+            });
         },
         data() {
             return {
@@ -136,7 +150,8 @@
                     initialFrameHeight: 350,
                     BaseUrl: '',
                     UEDITOR_HOME_URL: 'ueditor/',
-                    ossUrl: API.OSSUrl
+                    ossUrl: API.OSSUrl,
+                    moduleIndex: this.moduleIndex
                 },
                 addFormVisible: false,
                 //oss data
@@ -147,20 +162,6 @@
                 ossHost: '',
                 ossFormData: {}
             }
-        },
-        created() {
-            //获取oss认证
-            axios.get(API.OSSUrl).then((result) => {
-                if(!result || !result.data) {
-                    this.$message.error('图片服务器连接异常！')
-                    return
-                }
-                this.accessid = result.data.accessid
-                this.policy = result.data.policy
-                this.signature = result.data.signature
-                this.ossDir = result.data.dir
-                this.ossHost = result.data.host
-            });
         },
         mounted() {
             this.pageList(1);
@@ -251,7 +252,7 @@
                 this.ossFormData.OSSAccessKeyId = this.accessid
                 this.ossFormData.policy = this.policy
                 this.ossFormData.Signature = this.signature
-                this.ossFormData.key = this.ossDir + file.name
+                this.ossFormData.key = this.ossDir + "area_title" + this.moduleIndex +"/" + file.name
             },
             saveEdit() {
                 this.$refs.form.validate().then(() => {

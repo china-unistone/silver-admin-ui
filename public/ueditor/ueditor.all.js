@@ -16920,7 +16920,7 @@
                         me.hide();
                     });
 
-                    for (i = 0; i < 8; i++) {
+                    for (var i = 0; i < 8; i++) {
                         hands.push('<span class="edui-editor-imagescale-hand' + i + '"></span>');
                     }
                     resizer.id = me.editor.ui.id + '_imagescale';
@@ -24536,6 +24536,8 @@
                         return;
                     }
 
+                    // console.log("me.options.moduleIndex: ", me.options.moduleIndex);
+
                     //从oss获取认证并且上传至oss
                     $.get(me.options.ossUrl,{},function(ret){
                         if(!ret || ret.status != 0) {
@@ -24551,7 +24553,7 @@
                         formData.append('policy', sign['policy']);
                         formData.append('Signature', sign['signature']);
                         // formData.append('dir', sign['dir']);
-                        formData.append('key', sign['dir'] + object_name);
+                        formData.append('key', sign['dir'] + "area_content" + me.options.moduleIndex + "/" + object_name);
                         // 添加文件
                         formData.append('file', form[0].files[0]);
 
@@ -24562,7 +24564,7 @@
                             contentType: false,
                             type: 'POST'
                         }).success(function (data) {
-                            var link = sign['host'] + "/" + sign['dir'] + object_name;
+                            var link = sign['host'] + "/" + sign['dir'] + "area_content" + me.options.moduleIndex + "/" + object_name;
                             var loader = me.document.getElementById(loadingId);
                             loader.setAttribute('src', link);
                             loader.setAttribute('_src', link);

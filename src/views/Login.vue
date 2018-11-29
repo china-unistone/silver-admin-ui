@@ -52,16 +52,19 @@ export default {
         return false
       }
       //ajax提交表单
-      axios.post(API.Login, {
-          login: login,
-          password: password
+      axios.get(API.Login, {
+          params: {
+            login: login,
+            password: password
+          }
         })
-        .then(() => {
+        .then((res) => {
+          console.log('res is', res)
           //localStorage.setItem('AdmInCookies',login);
           this.$store.dispatch('setLoginUserId', {
             loginUserId: login
           })
-          localStorage.setItem('loginUserId',login)
+          localStorage.setItem('loginUserId', login)
           this.$message({
             'message': '登录成功',
             'type': 'success'
@@ -69,7 +72,8 @@ export default {
           router.push({
             name: 'home'
           })
-        }).catch(() => {
+        }).catch((error) => {
+          console.log(error)
           this.$message.error('登录失败，请确认用户名密码！')
           router.push({
             name: 'login'

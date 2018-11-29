@@ -183,7 +183,7 @@ export default {
         'type': 'success'
       })
       this.$router.push({
-        name: 'Login'
+        name: 'login'
       })
     }
   }

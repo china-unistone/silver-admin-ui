@@ -29,12 +29,11 @@
             </el-pagination>
         </el-row>
         <el-row v-if="!isList" class="edit-div">
-            <el-form ref="form" :model="form" label-width="160px">
-                <el-form-item label="文章标题">
+            <el-form ref="form" :model="form" :rules="formRule" label-width="160px">
+                <el-form-item label="文章标题" prop="title">
                     <el-input v-model="form.title"></el-input>
                 </el-form-item>
                 <el-form-item label="封面图片">
-                    <upload></upload>
                     <el-upload
                             accept=".jpg, .png"
                             ref="cover_img"
@@ -50,8 +49,8 @@
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
                 </el-form-item>
-                <el-form-item label="排列顺序">
-                    <el-input v-model="form.sort"></el-input>
+                <el-form-item label="排列顺序" prop="sort">
+                    <el-input v-model.number="form.sort"></el-input>
                 </el-form-item>
                 <el-form-item label="内容简介" style="display: none;">
                     <el-input type="textarea" v-model="form.phrase"></el-input>
@@ -77,13 +76,11 @@
 
 
     import UEditor from '@/components/ueditor/ueditor.vue'
-    import upload from '@/components/upload'
 
     export default {
         name: "SectionTab",
         components: {
             UEditor,
-            upload
         },
         props: {
             sectionIndex: Number,
@@ -109,6 +106,10 @@
                     id: 0,
                     phrase: '',
                     content: '',
+                },
+                formRule: {
+                    title: [{required: true, message: '请输入文章标题',trigger: 'blur'}],
+                    sort: [{required: true,message: '请输入排列序号',trigger: 'blur'},{type: 'number', message: '排列序号必须为数字值'}],
                 },
                 config: {
                     //可以在此处定义工具栏的内容
@@ -208,15 +209,12 @@
                     // 取消操作
                 })
             },
-            editRow(rId) {
-                console.log(rId)
-            },
             currentPageChanged(cp) {
                 this.pageList(cp);
             },
             switchToEditMode(row) {
                 let _this = this;
-                this.isList = false
+                this.isList = false;
                 this.form.id = row.id;
                 this.form.sort = row.sort;
                 this.form.phrase = row.phrase;
@@ -233,10 +231,10 @@
             },
             successCoverImgUpload(response, file, fileList) {
                 this.cover_img = URL.createObjectURL(file.raw);
-                console.log(response);
+                // console.log(response);
                 console.log(file);
-                console.log(fileList);
-                alert('上传成功:' + this.cover_img);
+                // console.log(fileList);
+                // alert('上传成功:' + this.cover_img);
             },
             beforeCoverImgUpload(file) {
                 const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');
@@ -256,31 +254,39 @@
                 this.ossFormData.key = this.ossDir + file.name
             },
             saveEdit() {
-                let content = this.$refs.ueditor.getUEContent();
-                let title = this.form.title;
-                let sort = this.form.sort;
-                let data = {
-                    id: parseInt(this.form.id),
-                    title: this.form.title,
-                    sort: parseInt(this.form.sort),
-                    phrase: this.form.phrase,
-                    content: content,
-                    coverImg: this.cover_img,
-                    module: this.moduleIndex,
-                    section: this.sectionIndex
-                };
-                let _this = this;
-                let apiUrl = (data.id) ? API.EditUpdateData : API.EditInsertData;
-                axios.post(apiUrl, data)
-                    .then(function (response) {
-                        if (response.status == 0) {
-                            _this.$message({type: "success", message: "文章提交成功"});
-                            _this.isList = true;
-                            _this.pageList(1);
-                        } else {
-                            _this.$message({type: "error", message: "文章提交失败"});
-                        }
-                    })
+                this.$refs.form.validate().then(() => {
+                    let content = this.$refs.ueditor.getUEContent();
+                    let title = this.form.title;
+                    let sort = this.form.sort;
+                    if(!this.cover_img){
+                        _this.$message({type: "error", message: "请先上传封面图片"});
+                        return false;
+                    }
+                    let data = {
+                        id: parseInt(this.form.id),
+                        title: this.form.title,
+                        sort: parseInt(this.form.sort),
+                        phrase: this.form.phrase,
+                        content: content,
+                        coverImg: this.cover_img,
+                        module: this.moduleIndex,
+                        section: this.sectionIndex
+                    };
+                    let _this = this;
+                    let apiUrl = (data.id) ? API.EditUpdateData : API.EditInsertData;
+                    axios.post(apiUrl, data)
+                        .then(function (response) {
+                            if (response.status == 0) {
+                                _this.$message({type: "success", message: "文章提交成功"});
+                                _this.isList = true;
+                                _this.pageList(1);
+                            } else {
+                                _this.$message({type: "error", message: "文章提交失败"});
+                            }
+                        })
+
+                }).catch(err => console.log(err))
+
             },
             cancelEdit() {
                 this.isList = true

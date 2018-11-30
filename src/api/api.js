@@ -11,6 +11,7 @@ const API = {
     AdminUserInsert:'/user/insert',
     AdminUserUpdate:'/user/update',
     AdminUserDelete:'/user/delete',
+    WithdrawPageList: '/withdraw/pageList',
 }
 
 export default API

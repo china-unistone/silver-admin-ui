@@ -19,7 +19,9 @@ export default {
     axios.get(API.Welcome).then(res => {
       console.log(res)
       this.message = res.data
-    }).catch()
+    }).catch(error => {
+      console.log('welcome page error ', error)
+    })
   }
 }
 </script>

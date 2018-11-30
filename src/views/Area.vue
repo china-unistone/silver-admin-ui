@@ -22,6 +22,12 @@
     <el-tab-pane label="创意生活" name="poetry" :lazy="true">
       <SectionTab :section-index="7" :module-index="1"></SectionTab>
     </el-tab-pane>
+    <el-tab-pane label="细银话题" name="toppic" :lazy="true">
+      <SectionTab :section-index="8" :module-index="1"></SectionTab>
+    </el-tab-pane>
+    <el-tab-pane label="为你写诗" name="write" :lazy="true">
+      <SectionTab :section-index="9" :module-index="1"></SectionTab>
+    </el-tab-pane>
   </el-tabs>
 </div>
 </template>

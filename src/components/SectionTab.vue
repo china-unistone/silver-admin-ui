@@ -296,7 +296,7 @@
                     inputPattern: /^[0-9]*$/,
                     inputErrorMessage: '淘宝商品itemId格式不正确'
                 }).then(({value}) => {
-                    UE.getEditor('editor').execCommand('insertHtml', '<div class="goodsBox">{#' + value + '#}</div>');
+                    UE.getEditor('editor'+this.moduleIndex).execCommand('insertHtml', '<div class="goodsBox">{#' + value + '#}</div>');
                 }).catch(() => {
                 });
             }

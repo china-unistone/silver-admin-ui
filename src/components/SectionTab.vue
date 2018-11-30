@@ -232,7 +232,7 @@
             },
             successCoverImgUpload(response, file, fileList) {
                 // this.cover_img = URL.createObjectURL(file.raw);
-                this.cover_img = this.ossHost + '/' + this.ossDir + 'area_title2/' + file.raw.name;
+                this.cover_img = this.ossHost + '/' + this.ossDir + "area_title" + this.moduleIndex +"/" + file.raw.name;
             },
             beforeCoverImgUpload(file) {
                 const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');

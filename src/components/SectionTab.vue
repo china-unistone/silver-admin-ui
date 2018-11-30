@@ -231,11 +231,8 @@
             removeCoverImgUpload(res, file) {
             },
             successCoverImgUpload(response, file, fileList) {
-                this.cover_img = URL.createObjectURL(file.raw);
-                // console.log(response);
-                console.log(file);
-                // console.log(fileList);
-                // alert('上传成功:' + this.cover_img);
+                // this.cover_img = URL.createObjectURL(file.raw);
+                this.cover_img = this.ossHost + '/' + this.ossDir + 'area_title2/' + file.raw.name;
             },
             beforeCoverImgUpload(file) {
                 const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png');

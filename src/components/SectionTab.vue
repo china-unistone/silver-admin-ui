@@ -57,7 +57,7 @@
                 </el-form-item>
                 <el-form-item label="详细内容" class="insertItem">
                     <span @click="insertItemid" class="insertItemDom">插入itemId</span>
-                    <UEditor :config=config ref="ueditor"></UEditor>
+                    <UEditor :config=config ref="ueditor" :id="moduleIndex.toString()"></UEditor>
                 </el-form-item>
                 <el-form-item>
                     <el-input type="hidden" v-model="form.id" style="display: none"></el-input>

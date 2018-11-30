@@ -1,6 +1,6 @@
 <template>
   <div>
-    <script id="editor" type="text/plain" ></script>
+    <script :id="editorId" type="text/plain" ></script>
   </div>
 </template>
 
@@ -25,19 +25,14 @@
     },
     data() {
       return {
+        editorId: 'editor' + this.id,
         editor: null
       }
     },
     mounted() {
       //初始化UE
-      const _this = this;
-      this.editor = UE.delEditor("editor");
-      this.editor = UE.getEditor('editor',this.config);
-      this.editor.addListener("ready", function () {
-          // alert(_this.config.initialFrameHeight)
-          // var content = _this.config.initialFrameHeight;
-          //   _this.editor.setContent(content); // 确保UE加载完成后，放入内容。
-      });
+      this.editor = UE.delEditor(this.editorId);
+      this.editor = UE.getEditor(this.editorId, this.config);
     },
     destoryed() {
       this.editor.destory();

@@ -18,8 +18,23 @@ const state = {
     // }, 
     {
       name: 'Area',
-      icon: 'el-icon-d-arrow-right',
-      title: '细银专区'
+      icon: 'el-icon-tickets',
+      title: '细银专区',
+      role: 'Area_Top',
+      subItems:[
+          {
+              name: 'Area',
+              title: '专区头条单品'
+          },
+          {
+              name: 'Arealife',
+              title: '品质生活'
+          },
+          {
+              name: 'Areahome',
+              title: '居家物品'
+          },
+      ]
     },
     {
       name: 'Circle',
@@ -64,7 +79,7 @@ const state = {
     }
   ],
   tabs: [],
-  tabComponents: ['Welcome', 'Area', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList']
+  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList']
 }
 
 export default state

@@ -33,6 +33,9 @@
                 <el-form-item label="文章标题" prop="title">
                     <el-input v-model="form.title"></el-input>
                 </el-form-item>
+                <el-form-item label="简短描述">
+                    <el-input v-model="form.phrase"></el-input>
+                </el-form-item>
                 <el-form-item label="封面图片">
                     <el-upload
                             accept=".jpg, .png"
@@ -51,9 +54,6 @@
                 </el-form-item>
                 <el-form-item label="排列顺序" prop="sort">
                     <el-input v-model.number="form.sort"></el-input>
-                </el-form-item>
-                <el-form-item label="内容简介" style="display: none;">
-                    <el-input type="textarea" v-model="form.phrase"></el-input>
                 </el-form-item>
                 <el-form-item label="详细内容" class="insertItem">
                     <span @click="insertItemid" class="insertItemDom">插入itemId</span>

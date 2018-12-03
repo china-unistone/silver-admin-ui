@@ -2,13 +2,13 @@
 <div class="area">
   <el-tabs v-model="activeName">
     <el-tab-pane label="拉新素材" name="top">
-      <SectionTab :section-index="1" :module-index="3"></SectionTab>
+      <SectionTab :section-index="31" :module-index="3"></SectionTab>
     </el-tab-pane>
     <el-tab-pane label="早安心语" name="life" :lazy="true">
-      <SectionTab :section-index="2" :module-index="3"></SectionTab>
+      <SectionTab :section-index="32" :module-index="3"></SectionTab>
     </el-tab-pane>
     <el-tab-pane label="小店" name="home" :lazy="true">
-      <SectionTab :section-index="3" :module-index="3"></SectionTab>
+      <SectionTab :section-index="33" :module-index="3"></SectionTab>
     </el-tab-pane>
   </el-tabs>
 </div>

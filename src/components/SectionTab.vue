@@ -57,7 +57,7 @@
                 </el-form-item>
                 <el-form-item label="详细内容" class="insertItem">
                     <span @click="insertItemid" class="insertItemDom">插入itemId</span>
-                    <UEditor :config=config ref="ueditor" :id="moduleIndex.toString()"></UEditor>
+                    <UEditor :config=config ref="ueditor" :id="sectionIndex.toString()"></UEditor>
                 </el-form-item>
                 <el-form-item>
                     <el-input type="hidden" v-model="form.id" style="display: none"></el-input>
@@ -151,7 +151,7 @@
                     BaseUrl: '',
                     UEDITOR_HOME_URL: 'ueditor/',
                     ossUrl: API.OSSUrl,
-                    moduleIndex: this.moduleIndex
+                    sectionIndex: this.sectionIndex
                 },
                 addFormVisible: false,
                 //oss data
@@ -296,7 +296,7 @@
                     inputPattern: /^[0-9]*$/,
                     inputErrorMessage: '淘宝商品itemId格式不正确'
                 }).then(({value}) => {
-                    UE.getEditor('editor'+this.moduleIndex).execCommand('insertHtml', '<div class="goodsBox">{#' + value + '#}</div>');
+                    UE.getEditor('editor'+this.sectionIndex).execCommand('insertHtml', '<div class="goodsBox">{#' + value + '#}</div>');
                 }).catch(() => {
                 });
             }

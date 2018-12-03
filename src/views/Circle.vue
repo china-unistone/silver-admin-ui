@@ -2,7 +2,7 @@
     <div class="area">
         <el-tabs v-model="activeName">
             <el-tab-pane label="每日爆款" name="top">
-                <SectionTab :section-index="1" :module-index="2"></SectionTab>
+                <SectionTab :section-index="21" :module-index="2"></SectionTab>
             </el-tab-pane>
         </el-tabs>
     </div>

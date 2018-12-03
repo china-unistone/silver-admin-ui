@@ -31,6 +31,7 @@
     },
     mounted() {
       //初始化UE
+        console.log("editorId:"+this.editorId);
       this.editor = UE.delEditor(this.editorId);
       this.editor = UE.getEditor(this.editorId, this.config);
     },

@@ -161,8 +161,8 @@ export default {
         pageSize: 10
       }
       if (this.dateRange.length === 2) {
-        params.startDate = moment(this.dateRange[0]).format('YYYY-MM-DD')
-        params.endDate = moment(this.dateRange[1]).add(1, 'days').format('YYYY-MM-DD')
+        params.startDate = moment(this.dateRange[0]).format('YYYY-MM-DDTHH:mm:ss.sssZ')
+        params.endDate = moment(this.dateRange[1]).add(1, 'days').format('YYYY-MM-DDTHH:mm:ss.sssZ')
         // params.startDate = this.dateRange[0]
         // params.endDate = this.dateRange[1]
       }

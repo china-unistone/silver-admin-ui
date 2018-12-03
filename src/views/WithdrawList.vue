@@ -40,7 +40,7 @@
       <el-table-column prop="statusStr" label="提现状态" align="center"></el-table-column>
       <el-table-column prop="gmtCreate" label="申请时间" align="center" min-width="120px"></el-table-column>
       <el-table-column fixed="right" label="操作" min-width="150">
-        <template slot-scope="scope">
+        <template slot-scope="scope" v-if="scope.row.status === '0'">
           <el-button icon="el-icon-circle-check" type="primary" @click="handleConfirm(scope.row)" size="small">确认提现</el-button>
           <el-button icon="el-icon-circle-close" @click="handleClose(scope.row.id)" type="danger" size="small">强制关闭</el-button>
         </template>

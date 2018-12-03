@@ -39,6 +39,12 @@
       <el-table-column prop="actualAmt" label="实际提现金额" align="center"></el-table-column>
       <el-table-column prop="statusStr" label="提现状态" align="center"></el-table-column>
       <el-table-column prop="gmtCreate" label="申请时间" align="center" min-width="120px"></el-table-column>
+      <el-table-column fixed="right" label="操作" min-width="150">
+        <template slot-scope="scope">
+          <el-button icon="el-icon-circle-check" type="primary" @click="handleConfirm(scope.row)" size="small">确认提现</el-button>
+          <el-button icon="el-icon-circle-close" @click="handleClose(scope.row.id)" type="danger" size="small">强制关闭</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-pagination class="pagination-div" layout="prev, pager, next" :page-count="totalPage" background @current-change="currentPageChanged"></el-pagination>
   </el-row>
@@ -99,6 +105,69 @@ export default {
     this.clickOnRefresh()
   },
   methods: {
+    /**
+     * 强制关闭此提现记录
+     */
+    handleClose(id) {
+      this.$confirm('确认关闭此提现记录?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        axios.get(API.WithdrawClose, {
+          params: {
+            id
+          }
+        }).then(res => {
+          if (res.status === 0) {
+            this.$message.success('保存成功')
+          } else {
+            this.$message.error('关闭失败')
+          }
+          this.clickOnRefresh()
+        }).catch(error => {
+          console.log(error)
+          this.$message.error('关闭失败')
+        })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+      }).catch(() => {
+        console.log('取消关闭')
+      })
+    },
+    /**
+     * 处理已提现记录，状态改为已提现，并修改实际提现金额
+     */
+    handleConfirm(row) {
+      this.$prompt('请确认提现金额', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        inputValue: row.amount,
+        inputPattern: /^\d+(\.[\d]{1,2})?$/,
+        inputErrorMessage: '请输入正确的金额'
+      }).then(({
+        value
+      }) => {
+        axios.post(API.WithdrawConfirm, {
+          actualAmt: value,
+          id: row.id
+        }).then(res => {
+          if (res.status === 0) {
+            this.$message.success('保存成功')
+          } else {
+            this.$message.error('保存失败')
+          }
+          this.clickOnRefresh()
+        }).catch(error => {
+          console.log(error)
+          this.$message.error('保存失败')
+        })
+      }).catch(() => {
+        console.log('用户取消确认')
+      })
+    },
     clickOnExportOut() {
       const elink = document.createElement("a")
       elink.style.display = "none"

@@ -166,7 +166,7 @@ export default {
     getDataList(cp) {
       const params = {
         pageNum: cp,
-        pageSize: 2
+        pageSize: 20
       }
       if (this.keyword && this.keyword.trim()) {
         params.keyword = this.keyword

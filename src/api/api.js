@@ -13,7 +13,8 @@ const API = {
     AdminUserDelete:'/user/delete',
     WithdrawPageList: '/withdraw/pageList',
     WithdrawConfirm: '/withdraw/confirm',
-    WithdrawClose: '/withdraw/close'
+    WithdrawClose: '/withdraw/close',
+    WithdrawImport: '/withdraw/import'
 }
 
 export default API

@@ -67,6 +67,21 @@ const state = {
       }]
     },
     {
+      name: 'TravelManagement',
+      icon: 'el-icon-tickets',
+      title: '旅游景区管理',
+      role: 'TRAVEL_MANAGE',
+      subItems: [{
+        name: 'ScenicSpotList',
+        // icon: 'el-icon-check',
+        title: '景区列表'
+      }, {
+        name: 'Strategy',
+        // icon: 'el-icon-check',
+        title: '攻略'
+      }]
+    },
+    {
       name: 'AdminUserManagement',
       icon: 'el-icon-tickets',
       title: '后台用户管理',
@@ -79,7 +94,7 @@ const state = {
     }
   ],
   tabs: [],
-  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList']
+  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList', 'ScenicSpotList']
 }
 
 export default state

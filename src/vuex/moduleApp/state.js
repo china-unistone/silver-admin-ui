@@ -76,9 +76,13 @@ const state = {
         // icon: 'el-icon-check',
         title: '景区列表'
       }, {
-        name: 'Strategy',
+        name: 'ScenicStrategy',
         // icon: 'el-icon-check',
-        title: '攻略'
+        title: '景区攻略'
+      }, {
+        name: 'ScenicLevel',
+        // icon: 'el-icon-check',
+        title: '景区级别设置'
       }]
     },
     {
@@ -94,7 +98,7 @@ const state = {
     }
   ],
   tabs: [],
-  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList', 'ScenicSpotList']
+  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList', 'ScenicSpotList', 'ScenicLevel']
 }
 
 export default state

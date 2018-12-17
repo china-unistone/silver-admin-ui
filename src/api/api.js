@@ -14,7 +14,11 @@ const API = {
     WithdrawPageList: '/withdraw/pageList',
     WithdrawConfirm: '/withdraw/confirm',
     WithdrawClose: '/withdraw/close',
-    WithdrawImport: '/withdraw/import'
+    WithdrawImport: '/withdraw/import',
+    ScenicLevelInsert: '/sceniclevel/insert',
+    ScenicLevelUpdate: '/sceniclevel/update',
+    ScenicLevelDelete: '/sceniclevel/delete',
+    ScenicLevelPageList: '/sceniclevel/pageList'
 }
 
 export default API

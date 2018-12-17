@@ -1,7 +1,7 @@
 <template>
 <div class="withdraw-list">
   <!-- <el-row class="export-div">
-    <el-upload class="upload-demo" :action=importApi :on-success="importSucess" :multiple=false :show-file-list=false :limit="1" ref="upload">
+    <el-upload :action=importApi :on-success="importSucess" :multiple=false :show-file-list=false :limit="1" ref="upload">
       <el-tooltip placement="top" content="导出所有未提现记录">
         <el-button type="primary" @click="clickOnExportOut">导出</el-button>
       </el-tooltip>
@@ -9,7 +9,7 @@
         <el-button type="primary">导入</el-button>
       </el-tooltip>
     </el-upload>
-    </el-row>-->
+  </el-row> -->
   <el-row class="search-div">
     <el-col :span="2">
       <el-tooltip placement="right" content="刷新">
@@ -61,7 +61,7 @@ export default {
   name: "WithdrawList",
   data() {
     return {
-      importApi: axios.defaults.baseURL + API.ImportExecutedWithdraw,
+      importApi: axios.defaults.baseURL + API.WithdrawImport,
       tableData: [],
       totalPage: 1,
       keyword: '',

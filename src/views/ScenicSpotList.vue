@@ -265,6 +265,41 @@ export default {
       this.listMode = false
     },
     /**
+     * 删除景点记录
+     */
+    handleDelete(rId) {
+      console.log(rId)
+      this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        axios.get(API.ScenicSpotDelete, {
+          params: {
+            id: rId
+          }
+        }).then(res => {
+          if (res.status !== 0) {
+            this.$message.error(res.msg)
+          } else {
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            })
+          }
+          this.clickOnRefresh()
+        }).catch(() => {
+          this.$message.error('删除失败')
+        })
+
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
+    },
+    /**
      * 更新排序值
      */
     handleSort(row) {

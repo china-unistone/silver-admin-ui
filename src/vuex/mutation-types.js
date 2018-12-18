@@ -9,5 +9,6 @@ export const SET_MENU_LIST = 'SET_MENU_LIST'
 export const RESET_TABS = 'RESET_TABS'
 export const ADD_TAB = 'ADD_TAB'
 export const REMOVE_TAB = 'REMOVE_TAB'
+export const SET_SCENIC_LEVEL = 'SET_SCENIC_LEVEL'
 
 // ===========ModuleOthers===========

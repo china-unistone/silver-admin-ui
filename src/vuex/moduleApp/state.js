@@ -74,7 +74,7 @@ const state = {
       subItems: [{
         name: 'ScenicSpotList',
         // icon: 'el-icon-check',
-        title: '景区列表'
+        title: '景区景点'
       }, {
         name: 'ScenicStrategy',
         // icon: 'el-icon-check',
@@ -82,7 +82,7 @@ const state = {
       }, {
         name: 'ScenicLevel',
         // icon: 'el-icon-check',
-        title: '景区级别设置'
+        title: '景区级别'
       }]
     },
     {

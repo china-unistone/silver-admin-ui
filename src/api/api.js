@@ -18,7 +18,11 @@ const API = {
     ScenicLevelInsert: '/sceniclevel/insert',
     ScenicLevelUpdate: '/sceniclevel/update',
     ScenicLevelDelete: '/sceniclevel/delete',
-    ScenicLevelPageList: '/sceniclevel/pageList'
+    ScenicLevelPageList: '/sceniclevel/pageList',
+    ScenicSpotInsert: '/scenicspot/insert',
+    ScenicSpotUpdate: '/scenicspot/update',
+    ScenicSpotDelete: '/scenicspot/delete',
+    ScenicSpotPageList: '/scenicspot/pageList',
 }
 
 export default API

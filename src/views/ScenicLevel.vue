@@ -30,8 +30,8 @@
       </el-form-item>
     </el-form>
     <el-row class="submit-button">
-      <el-button type="primary" @click="clickOnSubmit()">提交</el-button>
-      <el-button type="info" @click="clickOnCancelEdit()">取消</el-button>
+      <el-button type="primary" icon="el-icon-check" @click="clickOnSubmit()">提交</el-button>
+      <el-button type="info" icon="el-icon-close" @click="clickOnCancelEdit()">取消</el-button>
     </el-row>
   </el-row>
 </div>
@@ -110,11 +110,12 @@ export default {
       axios.get(API.ScenicLevelPageList, {
         params: {
           pageNum: 1,
-          pageSize: 20
+          pageSize: 200
         }
       }).then(res => {
         if (res.status === 0) {
           this.tableData = res.data
+          this.$store.dispatch('setScenicLevel', res.data)
         } else {
           this.$message.error('获取数据失败')
         }

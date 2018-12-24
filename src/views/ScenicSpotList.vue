@@ -40,7 +40,7 @@
         <el-table-column prop="city" label="所在城市" align="center"></el-table-column>
         <el-table-column prop="address" label="详细地址" align="center" min-width="150"></el-table-column>
         <el-table-column prop="sort" label="排序值" align="center"></el-table-column>
-        <el-table-column label="操作" min-width="150" align="center">
+        <el-table-column label="操作" min-width="250" align="center">
           <template slot-scope="scope">
             <el-button icon="el-icon-edit" type="primary" @click="handleUpdate(scope.row)" size="small">编辑景点</el-button>
             <el-button icon="el-icon-delete" @click="handleDelete(scope.row.id)" type="danger" size="small">删除景点</el-button>

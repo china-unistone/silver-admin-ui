@@ -98,7 +98,7 @@ const state = {
     }
   ],
   tabs: [],
-  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList', 'ScenicSpotList', 'ScenicLevel']
+  tabComponents: ['Welcome', 'Area', 'Arealife', 'Areahome', 'Circle', 'Bursting', 'Source', 'School', 'AdminUserList', 'WithdrawList', 'ScenicSpotList', 'ScenicLevel', 'ScenicStrategy']
 }
 
 export default state

@@ -55,8 +55,14 @@
                 <el-form-item label="排列顺序" prop="sort">
                     <el-input v-model.number="form.sort"></el-input>
                 </el-form-item>
+                <el-form-item v-if="moduleIndex == 2 || moduleIndex == 3" label="转发数" prop="repost">
+                    <el-input v-model.number="form.repost"></el-input>
+                </el-form-item>
+                <el-form-item v-if="moduleIndex == 2 || moduleIndex == 3" label="点赞数" prop="praise">
+                    <el-input v-model.number="form.praise"></el-input>
+                </el-form-item>
                 <el-form-item label="详细内容" class="insertItem">
-                    <span @click="insertItemid" class="insertItemDom">插入itemId</span>
+                    <span v-if="showItem" @click="insertItemid" class="insertItemDom">插入itemId</span>
                     <UEditor :config=config ref="ueditor" :id="sectionIndex.toString()"></UEditor>
                 </el-form-item>
                 <el-form-item>
@@ -85,6 +91,10 @@
         props: {
             sectionIndex: Number,
             moduleIndex: Number,
+            showItem: { // 是否显示淘宝商品, 默认为不显示
+                type: Boolean,
+                default: true
+            },
         },
         created() {
             //获取oss认证
@@ -120,10 +130,14 @@
                     id: 0,
                     phrase: '',
                     content: '',
+                    repost: 0,
+                    praise: 0
                 },
                 formRule: {
                     title: [{required: true, message: '请输入文章标题',trigger: 'blur'}],
                     sort: [{required: true,message: '请输入排列序号',trigger: 'blur'},{type: 'number', message: '排列序号必须为数字值'}],
+                    repost: [{required: true,message: '请输入转发数',trigger: 'blur'},{type: 'number', message: '转发数必须为数字值'}],
+                    praise: [{required: true,message: '请输入点赞数',trigger: 'blur'},{type: 'number', message: '点赞数必须为数字值'}],
                 },
                 config: {
                     //可以在此处定义工具栏的内容
@@ -164,7 +178,8 @@
             }
         },
         mounted() {
-            this.pageList(1);
+            this.pageList(1)
+            console.log('moduleIndex=====', this.moduleIndex)
         },
         methods: {
             pageList(cp) {
@@ -220,6 +235,8 @@
                 this.form.sort = row.sort;
                 this.form.phrase = row.phrase;
                 this.form.title = row.title;
+                this.form.repost = row.repost;
+                this.form.praise = row.praise;
                 this.form.content = row.content;
                 this.cover_img = row.coverImg;
                 this.config.initialContent = row.content;
@@ -265,6 +282,8 @@
                         title: this.form.title,
                         sort: parseInt(this.form.sort),
                         phrase: this.form.phrase,
+                        repost: this.form.repost || 0,
+                        praise: this.form.praise || 0,
                         content: content,
                         coverImg: this.cover_img,
                         module: this.moduleIndex,
